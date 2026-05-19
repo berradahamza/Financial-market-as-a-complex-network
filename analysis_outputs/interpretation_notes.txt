@@ -1,0 +1,73 @@
+
+Financial Network Interpretation Notes
+
+1. Scale of the network
+The final graph contains 3461 nodes and 13210 edges.
+This is large enough for a complex network study and is comparable in scale to large empirical networks
+studied in class.
+
+2. Density and sparsity
+The density is 0.002206, which shows that the graph is sparse.
+This is expected because the construction keeps the MST backbone and only adds strong correlation edges,
+instead of keeping all possible pairwise correlations.
+
+3. Clustering and communities
+The average unweighted clustering coefficient is 0.1485.
+The Louvain algorithm detects 60 communities.
+The weighted modularity is 0.6364.
+The unweighted modularity is 0.6805.
+
+This suggests that the financial network is not homogeneous. It contains groups of securities that are
+more strongly connected internally than externally.
+
+4. Central securities
+The top central nodes by degree are:
+RMT, RVT, CATY, BUSE, GDV, FNB, TOWN, ASB, ABCB, FULT
+
+These nodes have the largest number of direct connections in the filtered correlation network.
+They can be interpreted as securities with broad co-movement links to many other securities.
+
+5. Bridge securities
+The top nodes by betweenness are:
+GDV, RVT, RMT, STEW, RQI, THQ, BCX, NNN, PH, HQL
+
+These nodes may act as bridges between different market communities.
+
+6. Null-model comparison
+The financial network is compared to three null models:
+
+- ER graph with the same number of nodes and edges.
+- BA graph with similar average degree.
+- Configuration Model graph approximately preserving the empirical degree sequence.
+
+The main fair comparison uses unweighted metrics, because the null models do not have meaningful financial
+correlation weights. Weighted modularity is reported separately for the financial network.
+
+Observed financial values:
+- Average clustering: 0.1485
+- Degree assortativity: 0.2545
+- Average path length on LCC: 6.9756
+- Unweighted modularity: 0.6810
+- Number of Louvain communities: 78
+
+Use null_model_comparison_summary.csv to compare these values against the mean and standard deviation
+of ER, BA and Configuration Model graphs.
+
+If the financial network has higher clustering and modularity than ER, then its structure is not explained
+by random wiring alone.
+
+If it differs strongly from BA, then its structure is not explained only by hub formation.
+
+If it also differs from the Configuration Model, then its community structure is not only a consequence of
+the observed degree sequence.
+
+7. Important methodological limitation
+The real financial network is built from a correlation-distance matrix using an MST backbone plus strong
+correlation edges. The null models are generated directly as graphs. Therefore, the comparison tests whether
+the final graph resembles standard random graph mechanisms, but it does not reproduce the full financial
+network construction pipeline.
+
+8. Robustness
+Use robustness_curves.png to compare random failure and targeted attacks.
+If targeted removal of high-degree or high-betweenness nodes fragments the graph faster than random removal,
+the network depends strongly on structurally central securities.
