@@ -1,0 +1,2 @@
+nodes,edges,density,min_degree,max_degree,average_degree,average_weighted_degree,average_clustering_unweighted,average_clustering_weighted,assortativity_degree,connected,largest_connected_component_size,average_shortest_path_lcc,diameter_lcc
+3461,13210,0.0022062519937269625,1,361,7.63363189829529,5.300852602821089,0.1485320096932769,0.11336996666411686,0.25452087712382093,True,3461,6.975581917752395,24
